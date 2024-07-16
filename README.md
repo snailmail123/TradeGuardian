@@ -15,6 +15,8 @@ https://www.youtube.com/watch?v=UodGEVTsRbA
 - Uses Android Room for database management
 - Uses Dagger-Hilt for dependency injection
 
-  
+<br>
+<br>
+<br>
 
 ![alt text](https://i.imgur.com/OT3cZSQ.png)
