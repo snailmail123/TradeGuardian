@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_trades"
+        android:icon="@drawable/ic_list"
+        android:title="Trades" />
+
+    <item
+        android:id="@+id/navigation_create"
+        android:icon="@drawable/ic_add"
+        android:title="Create Trade" />
+    <item
+        android:id="@+id/navigation_wallet"
+        android:icon="@drawable/ic_wallet"
+        android:title="My Wallet" />
+</menu>

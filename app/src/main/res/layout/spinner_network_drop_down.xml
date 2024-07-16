@@ -1,0 +1,20 @@
+<!-- This is what it looks like when you click on the spinner and the drop down menu appears
+      also layout_height must not have android:layout_height="?android:attr/dropdownListPreferredItemHeight"
+      the android prefix otherwise it will be marked as private and won't work -->
+
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?android:attr/spinnerDropDownItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/dropdownListPreferredItemHeight"
+    android:background="@color/background_secondary_color"
+    android:ellipsize="marquee"
+    android:fontFamily="@font/poppins_regular"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingStart="16dp"
+    android:paddingTop="3dp"
+    android:paddingEnd="16dp"
+    android:textSize="14sp"
+    android:singleLine="true"
+    android:textAlignment="textStart"
+    android:textColor="@color/white" />

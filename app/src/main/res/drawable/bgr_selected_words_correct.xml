@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Define the solid color for the background -->
+
+
+    <!-- Define the stroke properties -->
+    <stroke
+        android:width="1dp" android:color="@color/green_400"/>
+
+    <!-- Optional: Define the corner radius if you want rounded corners -->
+    <corners android:radius="4dp"/>
+</shape>

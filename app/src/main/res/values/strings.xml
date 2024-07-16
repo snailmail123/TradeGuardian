@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Trade Guardian</string>
+    <string name="secure_your_wallet">This is your Secret Recovery Phrase. Write it\ndown on a paper and keep it in a safe place.\nYou\'ll be asked to re-enter this phrase\n(in order) on the next step.</string>
+    <string name="create_wallet_unlock">This password will unlock your TradeGuardian wallet only on this device.</string>
+    <string name="cannot_recover">I understand that TradeGuardian cannot\nrecover this password for me.</string>
+    <string name="make_sure_no_one">Make sure no one is watching your screen</string>
+    <string name="tap_to_reveal">Tap to reveal your Secret Recovery\nPhrase</string>
+    <string name="write_down_your">Write down your Secret Recovery\nPhrase</string>
+    <string name="you_can_only_recover">You can ONLY recover this wallet with your\nSecret Recovery Phrase TradeGuardian does\nnot have your Secret Recovery Phrase.</string>
+    <string name="your_current_wallet">Your current wallet, accounts and assets\nwill be removed from this app permanently.\nThis action cannot be undone.</string>
+    <string name="type_to_delete">Type\u00A0\u00A0\"delete\"\u00A0\u00A0to erase current\nwallet permanently</string>
+    <string name="deposit_description_correct_item">"Confirm that the item has been successfully delivered by the seller.</string>
+    <string name="deposit_description_incorrect_item">Confirm that the item given by the seller is incorrect or no item has been given.\n\nAre you sure? This action is irreversible and will lock both deposits.</string>
+    <string name="deposit_description_item_delivered">Confirm that that the item has been delivered to the buyer.</string>
+    <string name="confirm_cancel_trade">Are you sure you want to cancel the trade? If you have made a deposit it will be returned.</string>
+</resources>

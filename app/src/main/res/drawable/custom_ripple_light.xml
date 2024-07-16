@@ -1,0 +1,13 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/light_ripple_color">
+    <!-- 🡡 the ripple's color (1) -->
+
+    <!-- 🡣 no `id` so our <shape> will be drawn and not just used as mask -->
+    <item>
+        <shape>
+            <corners android:radius="6dp" />
+            <solid android:color="@color/background_secondary_color" />
+        </shape>
+    </item>
+
+</ripple>

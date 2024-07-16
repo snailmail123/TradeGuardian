@@ -1,0 +1,59 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgr_spinner_network">
+
+    <ImageView
+        android:id="@+id/iv_network_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_wallet_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ellipsize="middle"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="--"
+        android:textColor="@color/default_text_color"
+        app:layout_constraintBottom_toTopOf="@+id/tv_wallet_balance"
+        app:layout_constraintEnd_toStartOf="@+id/btn_wallet_more_options"
+        app:layout_constraintStart_toEndOf="@id/iv_network_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_wallet_balance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:text="--"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_wallet_more_options"
+        app:layout_constraintStart_toEndOf="@id/iv_network_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wallet_address" />
+
+    <ImageView
+        android:id="@+id/btn_wallet_more_options"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="?attr/actionBarItemBackground"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

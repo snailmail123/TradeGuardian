@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="default_text_color">#808080</color>
+    <color name="background_color">#121212</color>
+    <color name="background_secondary_color">#2d2d2d</color>
+
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_400">#7E57C2</color>
+
+    <color name="gold_color">#FFD700</color>
+    <color name="silver_color">#C0C0C0</color>
+
+    <color name="default_text_color_50_opacity">#80808080</color>
+
+    <color name="red_400">#EF5350</color>
+    <color name="green_400">#66BB6A</color>
+    <color name="blue_400">#42A5F5</color>
+    <color name="yellow_400">#D4E157</color>
+
+    <color name="light_ripple_color">#33FFFFFF</color>
+
+</resources>

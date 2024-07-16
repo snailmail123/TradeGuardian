@@ -1,0 +1,20 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- Solid background color -->
+        <shape>
+            <corners android:radius="4dp" />
+            <solid android:color="@color/background_secondary_color" />
+        </shape>
+    </item>
+    <item>
+        <!-- Dotted line drawable -->
+        <shape>
+            <corners android:radius="4dp" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/purple_200"
+                android:dashWidth="4dp"
+                android:dashGap="4dp" />
+        </shape>
+    </item>
+</layer-list>

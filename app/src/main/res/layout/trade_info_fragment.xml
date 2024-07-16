@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStart="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_date_expiration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingTop="6dp"
+            android:text="Trade Status"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintTop_toTopOf="@+id/btn_back" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/circle_1"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/circle_holo_grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/circle_1_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="1"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/circle_1"
+                    app:layout_constraintEnd_toEndOf="@+id/circle_1"
+                    app:layout_constraintStart_toStartOf="@+id/circle_1"
+                    app:layout_constraintTop_toTopOf="@+id/circle_1" />
+
+                <TextView
+                    android:id="@+id/tv_static_awaiting_deposit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="Awaiting deposit from both parties"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/circle_1"
+                    app:layout_constraintStart_toEndOf="@+id/circle_1"
+                    app:layout_constraintTop_toTopOf="@+id/circle_1" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_awaiting_deposit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_awaiting_deposit"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_awaiting_deposit">
+
+                    <TextView
+                        android:id="@+id/tv_seller_deposit_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="Seller --"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_buyer_deposit_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="Buyer --"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="@+id/tv_seller_deposit_status"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_seller_deposit_status" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_deposit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:backgroundTint="@color/purple_200"
+                        android:fontFamily="@font/poppins_bold"
+                        android:paddingTop="6dp"
+                        android:text="Deposit"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        app:cornerRadius="24sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_seller_deposit_status"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_buyer_deposit_status" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/line_1"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@color/default_text_color"
+                    app:layout_constraintBottom_toTopOf="@+id/circle_2"
+                    app:layout_constraintEnd_toEndOf="@+id/circle_1"
+                    app:layout_constraintStart_toStartOf="@+id/circle_1"
+                    app:layout_constraintTop_toBottomOf="@+id/circle_1" />
+
+                <View
+                    android:id="@+id/circle_2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/circle_holo_grey"
+                    app:layout_constraintEnd_toEndOf="@+id/line_1"
+                    app:layout_constraintStart_toStartOf="@+id/line_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_awaiting_deposit" />
+
+                <TextView
+                    android:id="@+id/circle_2_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="2"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/circle_2"
+                    app:layout_constraintEnd_toEndOf="@+id/circle_2"
+                    app:layout_constraintStart_toStartOf="@+id/circle_2"
+                    app:layout_constraintTop_toTopOf="@+id/circle_2" />
+
+                <TextView
+                    android:id="@+id/tv_static_awaiting_item_delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="Awaiting item delivery from seller"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/circle_2"
+                    app:layout_constraintStart_toEndOf="@+id/circle_2"
+                    app:layout_constraintTop_toTopOf="@+id/circle_2" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_awaiting_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_awaiting_item_delivery"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_awaiting_item_delivery">
+
+                    <TextView
+                        android:id="@+id/tv_seller_delivery_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="Seller --"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_buyer_received_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="Buyer --"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_seller_delivery_status" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_item_received"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:backgroundTint="@color/green_400"
+                        android:fontFamily="@font/poppins_bold"
+                        android:paddingTop="6dp"
+                        android:text="Item Received"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        app:cornerRadius="24sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_buyer_received_status" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_item_delivered"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="32dp"
+                        android:backgroundTint="@color/green_400"
+                        android:fontFamily="@font/poppins_bold"
+                        android:paddingTop="6dp"
+                        android:text="Item Delivered"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        app:cornerRadius="24sp"
+                        app:layout_constraintStart_toStartOf="@id/btn_item_received"
+                        app:layout_constraintTop_toTopOf="@id/btn_item_received" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_incorrect_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/red_400"
+                        android:fontFamily="@font/poppins_bold"
+                        android:paddingTop="6dp"
+                        android:text="Not Received"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        app:cornerRadius="24sp"
+                        app:layout_constraintStart_toEndOf="@+id/btn_item_received"
+                        app:layout_constraintTop_toTopOf="@+id/btn_item_received"
+                        app:strokeColor="@color/red_400"
+                        app:strokeWidth="1.5dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/line_2"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@color/default_text_color"
+                    app:layout_constraintBottom_toTopOf="@+id/circle_3"
+                    app:layout_constraintEnd_toEndOf="@+id/circle_2"
+                    app:layout_constraintStart_toStartOf="@+id/circle_2"
+                    app:layout_constraintTop_toBottomOf="@+id/circle_2" />
+
+                <View
+                    android:id="@+id/circle_3"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/circle_holo_grey"
+                    app:layout_constraintEnd_toEndOf="@+id/line_2"
+                    app:layout_constraintStart_toStartOf="@+id/line_2"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_awaiting_item" />
+
+                <TextView
+                    android:id="@+id/circle_3_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="3"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/circle_3"
+                    app:layout_constraintEnd_toEndOf="@+id/circle_3"
+                    app:layout_constraintStart_toStartOf="@+id/circle_3"
+                    app:layout_constraintTop_toTopOf="@+id/circle_3" />
+
+                <TextView
+                    android:id="@+id/tv_static_return_deposits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="Return deposits to both parties"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/circle_3"
+                    app:layout_constraintStart_toEndOf="@+id/circle_3"
+                    app:layout_constraintTop_toTopOf="@+id/circle_3" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_return_deposits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_return_deposits"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_return_deposits">
+
+                    <TextView
+                        android:id="@+id/tv_amount_payed_to_seller"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="Buyer paid -- to seller"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="@+id/tv_return_buyer_status"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_return_seller_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="-- returned to seller"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_amount_payed_to_seller" />
+
+                    <TextView
+                        android:id="@+id/tv_return_buyer_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="-- returned to buyer"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="@+id/tv_return_seller_status"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_return_seller_status" />
+
+                    <TextView
+                        android:id="@+id/tv_fees_per_party"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="-- fee per party"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_return_buyer_status" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_settle_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/layout_return_deposits"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_return_deposits">
+
+                    <TextView
+                        android:id="@+id/tv_seller_settle_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="Seller has --"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_buyer_settle_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="Buyer has --"
+                        android:textColor="@color/default_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_seller_settle_status" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_trade_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/dashed_bgr"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="--"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_settle_status" />
+
+                <FrameLayout
+                    android:id="@+id/progress_step_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/background_color"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_static_trade_info"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_static_trade_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Trade Info"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_trade_status" />
+
+                <TextView
+                    android:id="@+id/tv_static_contract_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Contract Address:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_trade_info" />
+
+                <TextView
+                    android:id="@+id/tv_contract_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_static_contract_address"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_contract_address"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_contract_address" />
+
+                <ImageView
+                    android:id="@+id/btn_copy_contract_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/actionBarItemBackground"
+                    android:paddingStart="6dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="3dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_static_contract_address"
+                    app:layout_constraintStart_toEndOf="@+id/tv_static_contract_address"
+                    app:srcCompat="@drawable/ic_grey_copy" />
+
+                <TextView
+                    android:id="@+id/tv_static_deployed_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Deployed on:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_contract_address"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_contract_address" />
+
+                <TextView
+                    android:id="@+id/tv_deployed_on"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_static_contract_address"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_contract_address"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_deployed_on" />
+
+                <TextView
+                    android:id="@+id/tv_static_item_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Item Price:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_static_contract_address"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_contract_address"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_deployed_on" />
+
+                <TextView
+                    android:id="@+id/tv_item_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_item_price" />
+
+                <TextView
+                    android:id="@+id/tv_static_my_role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="I am the:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintStart_toStartOf="@id/tv_static_contract_address"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_item_price" />
+
+                <TextView
+                    android:id="@+id/tv_user_role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_my_role" />
+
+                <TextView
+                    android:id="@+id/tv_static_my_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="My Wallet:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_user_role" />
+
+                <TextView
+                    android:id="@+id/tv_user_wallet_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_my_address" />
+
+                <TextView
+                    android:id="@+id/tv_static_counterparty_role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Counterparty Role:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_user_wallet_address" />
+
+                <TextView
+                    android:id="@+id/tv_counter_party_role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_counterparty_role" />
+
+                <TextView
+                    android:id="@+id/tv_static_counterparty_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Counterparty Wallet:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_counter_party_role" />
+
+                <TextView
+                    android:id="@+id/tv_counterparty_wallet_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_static_counterparty_address"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_counterparty_address" />
+
+                <TextView
+                    android:id="@+id/tv_static_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Description:"
+                    android:textColor="@color/default_text_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_counterparty_wallet_address" />
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ellipsize="middle"
+                    android:fontFamily="@font/poppins_regular"
+                    android:maxLines="1"
+                    android:text="--"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_static_description" />
+
+                <LinearLayout
+                    android:id="@+id/layout_btns"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:weightSum="3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_description">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btn_request_settle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_ripple_light"
+                        android:elevation="4dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <ImageView
+                            android:id="@+id/iv_static_key_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bgr_btn_circle_blue"
+                            android:padding="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_handshake" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="Request to\nSettle"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_static_key_icon" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btn_view_on_explorer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_ripple_light"
+                        android:elevation="4dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <ImageView
+                            android:id="@+id/iv_static_url_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bgr_btn_circle_purple"
+                            android:padding="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_open_link" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="View On\nExplorer"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_static_url_btn" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btn_cancel_trade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_ripple_light"
+                        android:elevation="4dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <ImageView
+                            android:id="@+id/iv_trash_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bgr_btn_circle_red"
+                            android:padding="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/thick_close" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="Cancel\nTrade"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_trash_icon" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_secondary_color">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Confirmed Transaction"
+        android:textColor="@color/green_400"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_static_tx_hash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Transaction Hash:"
+        android:textColor="@color/default_text_color"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_tx_hash"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="--"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tv_static_tx_hash"
+        app:layout_constraintStart_toStartOf="@+id/tv_static_tx_hash"
+        app:layout_constraintTop_toBottomOf="@+id/tv_static_tx_hash" />
+
+    <TextView
+        android:id="@+id/tv_static_contract_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Contract Address:"
+        android:textColor="@color/default_text_color"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tx_hash" />
+
+    <TextView
+        android:id="@+id/tv_contract_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="--"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tv_static_tx_hash"
+        app:layout_constraintStart_toStartOf="@+id/tv_static_tx_hash"
+        app:layout_constraintTop_toBottomOf="@+id/tv_static_contract_address" />
+
+    <TextView
+        android:id="@+id/tv_static_gas_used"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Gas Used:"
+        android:textColor="@color/default_text_color"
+        app:layout_constraintTop_toBottomOf="@+id/tv_contract_address" />
+
+    <TextView
+        android:id="@+id/tv_gas_used"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="--"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tv_static_tx_hash"
+        app:layout_constraintStart_toStartOf="@+id/tv_static_tx_hash"
+        app:layout_constraintTop_toBottomOf="@+id/tv_static_gas_used" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/default_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gas_used" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_view_explorer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <ImageView
+            android:id="@+id/iv_static_link"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_open_link" />
+
+        <TextView
+            android:id="@+id/tv_explorer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingTop="19dp"
+            android:paddingBottom="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/iv_static_link" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
